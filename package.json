@@ -1,0 +1,28 @@
+{
+  "name": "networkproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjw12qwas/NetWorkProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kjw12qwas/NetWorkProject/issues"
+  },
+  "homepage": "https://github.com/kjw12qwas/NetWorkProject#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-route": "^0.1.4",
+    "mysql": "^2.18.1",
+    "route": "^0.2.5",
+    "socker.io": "0.0.0-alpha-beta"
+  },
+  "devDependencies": {}
+}
