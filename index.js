@@ -39,7 +39,7 @@ app.post('/user/join', function (req, res) {
             console.log(err);
         }
         if (rows[0].is_id === 1){
-            res.status(403).send({message : "아이디 중복이야 ㅄ아"})
+            res.status(403).send({message : "아이디 중복이야아"})
         }
         else {
             connection.query(sql, params, function (err, result) {
@@ -139,11 +139,15 @@ app.post('/user/myuser/update', function(req, res) {
 })
 
 // 모든 그룹 불러옴
-app.get('/group' , function(req, res) {
+app.post('/group' , function(req, res) {
+    const {
+        userPeople,
+        userStudyField
+     } = req.body;
     var resultCode = 404;
     var message = '에러가 발생했습니다';
     
-    var sql = `select * from network_database.groups`;
+    var sql = `select * from network_database.groups where People >=  ${userPeople}`;
     
     connection.query(sql, function(err, rows, field){
         if(err) {
@@ -167,7 +171,7 @@ app.get('/group/mygroup', function(req, res) {
     var resultCode = 404;
     var message = '에러가 발생했습니다';
     var groupUserID = req.body.userID;
-    var sql = `select * from network_database.groups where UserID = ${req.query.userID}`;
+    var sql = `select * from network_database.groups network_database.Users where groups.UserID = User.${req.query.userID}`;
 
     connection.query(sql, function(err, rows, field){
         if(err) {
@@ -268,7 +272,7 @@ app.post('/group/join', function(req, res) {
 app.get('/group/join/group', function(req, res){
     var resultCode = 404;
     var message = '에러가 발생했습니다';
-    var sql = `SELECT * FROM network_Database.groupjoin where UserID = ${req.query.userID}`;
+    var sql = `SELECT * FROM users, groups where users.UserID = groups.UserID`;
 
     connection.query(sql, function(err, rows, field){
         if(err) {
