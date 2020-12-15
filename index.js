@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     database: "network_database",
-    password: "12qwaszx", 
+    password: "암호는 알려줄 수 없어요", 
     port: 3306
 });
 
@@ -272,7 +272,7 @@ app.post('/group/join', function(req, res) {
 app.get('/group/join/group', function(req, res){
     var resultCode = 404;
     var message = '에러가 발생했습니다';
-    var sql = `SELECT * FROM users, groups where users.UserID = groups.UserID`;
+    var sql = `SELECT * FROM groupjoin, groups where groupjoin.UserID = groups.UserID`;
 
     connection.query(sql, function(err, rows, field){
         if(err) {
